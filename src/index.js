@@ -1,7 +1,11 @@
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 const routes = require("./routes/tasks")
 const app = express();
+mongoose.connect('mongodb://localhost/mevn-database')               //Se conecta con la base de datos de mongo. Para hacer esto ejecute el comando mongod previamente en cmd
+.then(db => console.log('Database connected'))
+.catch(err => console.log(err))
 
 //Settings                                                          // Aca manifiesto que si el servidor me da un puerto, que lo use 
 app.set("port", process.env.PORT || 3000);                          //, de caso contrario que utilice el 3000.
